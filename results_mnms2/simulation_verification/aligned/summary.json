@@ -1,0 +1,51 @@
+{
+  "design": "patient-level cross-fit: graph on train patients; profiles on held-out patients",
+  "primary_endpoint": "edge semantic similarity minus train-statistic-matched non-edge similarity",
+  "n_samples": 120,
+  "n_patients": 40,
+  "n_channels": 24,
+  "concept_names": [
+    "C0",
+    "C1",
+    "C2"
+  ],
+  "densities": {
+    "0.05": {
+      "n_folds": 3,
+      "mean_edge_semantic_similarity": 0.981227602557599,
+      "mean_matched_nonedge_semantic_similarity": 0.3879558490145074,
+      "mean_edge_minus_matched_nonedge": 0.5932717535430915,
+      "patient_bootstrap_ci_low": 0.5802190829897094,
+      "patient_bootstrap_ci_high": 0.5940376361843897,
+      "primary_profile_permutation_null_mean": 8.393291980903217e-05,
+      "primary_profile_permutation_null_sd": 0.08971258812143046,
+      "primary_profile_permutation_p": 0.0196078431372549,
+      "mean_exact_match_rate": 1.0,
+      "mean_topology_edge_change_fraction": 0.7357142857142858,
+      "mean_global_nmi": 0.6440073502538323,
+      "mean_global_ari": 0.35705239048196225
+    },
+    "0.1": {
+      "n_folds": 3,
+      "mean_edge_semantic_similarity": 0.9781927280324744,
+      "mean_matched_nonedge_semantic_similarity": 0.35784479423503224,
+      "mean_edge_minus_matched_nonedge": 0.6203479337974424,
+      "patient_bootstrap_ci_low": 0.6102684870243373,
+      "patient_bootstrap_ci_high": 0.6205843348529955,
+      "primary_profile_permutation_null_mean": 0.005347267969880118,
+      "primary_profile_permutation_null_sd": 0.07556849963948417,
+      "primary_profile_permutation_p": 0.0196078431372549,
+      "mean_exact_match_rate": 0.9642857142857143,
+      "mean_topology_edge_change_fraction": 0.705952380952381,
+      "mean_global_nmi": 0.8069646922974892,
+      "mean_global_ari": 0.7525314819370116
+    }
+  },
+  "warnings": [
+    "This controls extraction/evaluation reuse but cannot undo classifier-training leakage without the classifier split file.",
+    "Pairwise coupling-semantic rho is descriptive because channel pairs share nodes.",
+    "Global NMI/ARI are descriptive and are not evidence for semantically filtered components.",
+    "The patient bootstrap resamples held-out patients within folds and aggregates the same replicate across folds; graph estimates remain fixed within each fold.",
+    "Topology rewiring tests edge similarity as a secondary null; the declared primary endpoint is tested by the aggregate profile-permutation contrast."
+  ]
+}

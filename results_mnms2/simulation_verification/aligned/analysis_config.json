@@ -1,0 +1,16 @@
+{
+  "densities": [
+    0.05,
+    0.1
+  ],
+  "n_folds": 3,
+  "n_permutations": 50,
+  "n_rewires": 20,
+  "rewire_swap_factor": 1,
+  "n_bootstraps": 50,
+  "min_profile_mass": 1e-08,
+  "min_match_rate": 0.7,
+  "seed": 42,
+  "device": "cpu",
+  "chunk_size": 0
+}

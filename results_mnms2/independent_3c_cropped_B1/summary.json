@@ -1,0 +1,81 @@
+{
+  "design": "patient-level cross-fit: graph on train patients; profiles on held-out patients",
+  "primary_endpoint": "edge semantic similarity minus train-statistic-matched non-edge similarity",
+  "n_samples": 720,
+  "n_patients": 360,
+  "n_channels": 384,
+  "concept_names": [
+    "LV",
+    "MYO",
+    "RV"
+  ],
+  "densities": {
+    "0.01": {
+      "n_folds": 5,
+      "mean_edge_semantic_similarity": 0.7958081312169243,
+      "mean_matched_nonedge_semantic_similarity": 0.5963032321868116,
+      "mean_edge_minus_matched_nonedge": 0.19950489903011273,
+      "patient_bootstrap_ci_low": 0.19547467121656698,
+      "patient_bootstrap_ci_high": 0.20310592922412746,
+      "primary_profile_permutation_null_mean": -9.683325855072152e-05,
+      "primary_profile_permutation_null_sd": 0.005813001348090682,
+      "primary_profile_permutation_p": 0.000999000999000999,
+      "mean_exact_match_rate": 1.0,
+      "mean_topology_edge_change_fraction": 0.751429347826087,
+      "mean_global_nmi": 0.2823466982841585,
+      "mean_global_ari": 0.049807099594886294
+    },
+    "0.025": {
+      "n_folds": 5,
+      "mean_edge_semantic_similarity": 0.7788981623328949,
+      "mean_matched_nonedge_semantic_similarity": 0.6038283843547272,
+      "mean_edge_minus_matched_nonedge": 0.17506977797816775,
+      "patient_bootstrap_ci_low": 0.17148588615307164,
+      "patient_bootstrap_ci_high": 0.17820277884672778,
+      "primary_profile_permutation_null_mean": 4.2983719639856615e-05,
+      "primary_profile_permutation_null_sd": 0.004985006849815389,
+      "primary_profile_permutation_p": 0.000999000999000999,
+      "mean_exact_match_rate": 1.0,
+      "mean_topology_edge_change_fraction": 0.6765220228384992,
+      "mean_global_nmi": 0.2651452772572207,
+      "mean_global_ari": 0.07378954081938005
+    },
+    "0.05": {
+      "n_folds": 5,
+      "mean_edge_semantic_similarity": 0.7632108839755187,
+      "mean_matched_nonedge_semantic_similarity": 0.6069051477185943,
+      "mean_edge_minus_matched_nonedge": 0.15630573625692462,
+      "patient_bootstrap_ci_low": 0.15303087405155227,
+      "patient_bootstrap_ci_high": 0.15923788683112045,
+      "primary_profile_permutation_null_mean": -3.159324741819859e-05,
+      "primary_profile_permutation_null_sd": 0.004163443542069228,
+      "primary_profile_permutation_p": 0.000999000999000999,
+      "mean_exact_match_rate": 1.0,
+      "mean_topology_edge_change_fraction": 0.629354364971444,
+      "mean_global_nmi": 0.23960341897039586,
+      "mean_global_ari": 0.11974420170447624
+    },
+    "0.1": {
+      "n_folds": 5,
+      "mean_edge_semantic_similarity": 0.7469136803789661,
+      "mean_matched_nonedge_semantic_similarity": 0.6530127783477324,
+      "mean_edge_minus_matched_nonedge": 0.09390090203123366,
+      "patient_bootstrap_ci_low": 0.09149439780810786,
+      "patient_bootstrap_ci_high": 0.09601146174165162,
+      "primary_profile_permutation_null_mean": 4.332367941946233e-05,
+      "primary_profile_permutation_null_sd": 0.003951413064858094,
+      "primary_profile_permutation_p": 0.000999000999000999,
+      "mean_exact_match_rate": 1.0,
+      "mean_topology_edge_change_fraction": 0.5912289910252924,
+      "mean_global_nmi": 0.1906186229355121,
+      "mean_global_ari": 0.17369348310260851
+    }
+  },
+  "warnings": [
+    "This controls extraction/evaluation reuse but cannot undo classifier-training leakage without the classifier split file.",
+    "Pairwise coupling-semantic rho is descriptive because channel pairs share nodes.",
+    "Global NMI/ARI are descriptive and are not evidence for semantically filtered components.",
+    "The patient bootstrap resamples held-out patients within folds and aggregates the same replicate across folds; graph estimates remain fixed within each fold.",
+    "Topology rewiring tests edge similarity as a secondary null; the declared primary endpoint is tested by the aggregate profile-permutation contrast."
+  ]
+}

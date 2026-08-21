@@ -1,0 +1,51 @@
+{
+  "design": "patient-level cross-fit: graph on train patients; profiles on held-out patients",
+  "primary_endpoint": "edge semantic similarity minus train-statistic-matched non-edge similarity",
+  "n_samples": 120,
+  "n_patients": 40,
+  "n_channels": 24,
+  "concept_names": [
+    "C0",
+    "C1",
+    "C2"
+  ],
+  "densities": {
+    "0.05": {
+      "n_folds": 3,
+      "mean_edge_semantic_similarity": 0.3298314340349156,
+      "mean_matched_nonedge_semantic_similarity": 0.41567958255650295,
+      "mean_edge_minus_matched_nonedge": -0.08584814852158733,
+      "patient_bootstrap_ci_low": -0.08947889480093602,
+      "patient_bootstrap_ci_high": -0.08141851112159458,
+      "primary_profile_permutation_null_mean": -0.015103771787929411,
+      "primary_profile_permutation_null_sd": 0.1083765525058757,
+      "primary_profile_permutation_p": 0.7450980392156863,
+      "mean_exact_match_rate": 0.9761904761904763,
+      "mean_topology_edge_change_fraction": 0.6833333333333332,
+      "mean_global_nmi": 0.3499531819693141,
+      "mean_global_ari": -0.007721147026041139
+    },
+    "0.1": {
+      "n_folds": 3,
+      "mean_edge_semantic_similarity": 0.372388801201385,
+      "mean_matched_nonedge_semantic_similarity": 0.2605215874701161,
+      "mean_edge_minus_matched_nonedge": 0.11186721373126896,
+      "patient_bootstrap_ci_low": 0.10837024634621609,
+      "patient_bootstrap_ci_high": 0.11441848432829807,
+      "primary_profile_permutation_null_mean": -0.0023090029976690573,
+      "primary_profile_permutation_null_sd": 0.07801641328729435,
+      "primary_profile_permutation_p": 0.13725490196078433,
+      "mean_exact_match_rate": 0.9047619047619048,
+      "mean_topology_edge_change_fraction": 0.705952380952381,
+      "mean_global_nmi": 0.2346006438810245,
+      "mean_global_ari": -0.009147250391745519
+    }
+  },
+  "warnings": [
+    "This controls extraction/evaluation reuse but cannot undo classifier-training leakage without the classifier split file.",
+    "Pairwise coupling-semantic rho is descriptive because channel pairs share nodes.",
+    "Global NMI/ARI are descriptive and are not evidence for semantically filtered components.",
+    "The patient bootstrap resamples held-out patients within folds and aggregates the same replicate across folds; graph estimates remain fixed within each fold.",
+    "Topology rewiring tests edge similarity as a secondary null; the declared primary endpoint is tested by the aggregate profile-permutation contrast."
+  ]
+}
