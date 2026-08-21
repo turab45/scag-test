@@ -14,6 +14,7 @@ from matplotlib.colors import ListedColormap
 from torch.utils.data import Dataset, DataLoader
 from torchvision import transforms
 from typing import Optional
+from scag_dataset_utils import dataset_paths, resolve_phase_matched_gt, stable_directory_entries
 
 MNM2_ROOT = '/media/kislay/New Volume/Turab/data/MnM2/'
 
@@ -408,8 +409,7 @@ class MnMsDatasetLAX(Dataset):
     def __init__(self, data_dir, transform=None, target_shape=(3, 224, 224),
                  disease_filter=None, max_images=None, include_heart_union=False, include_heart_union_only=False,
                  get_original_concepts=False):
-        self.data_dir = data_dir + "dataset/"
-        self.labels_csv = data_dir + "dataset_information.csv"
+        self.data_dir, self.labels_csv = dataset_paths(data_dir)
         self.transform = transform
         self.target_shape = target_shape
         self.image_slices = []
@@ -420,7 +420,7 @@ class MnMsDatasetLAX(Dataset):
         self.include_heart_union = include_heart_union
         self.include_heart_union_only = include_heart_union_only
         self.get_original_concepts = get_original_concepts
-        for patient_folder in os.listdir(self.data_dir):
+        for patient_folder in stable_directory_entries(self.data_dir):
             patient_path = os.path.join(self.data_dir, patient_folder)
             if not os.path.isdir(patient_path):
                 continue
@@ -430,7 +430,7 @@ class MnMsDatasetLAX(Dataset):
                 if patient_label != disease_filter:
                     continue
 
-            for file in os.listdir(patient_path):
+            for file in stable_directory_entries(patient_path):
                 if file.endswith(".nii.gz") and "gt" not in file and "CINE" not in file:
                     nifti_path = os.path.join(patient_path, file)
                     gt_path = self.get_gt_path(patient_folder, file)
@@ -465,15 +465,7 @@ class MnMsDatasetLAX(Dataset):
     # ── helpers ──────────────────────────────────────────────────────────────
 
     def get_gt_path(self, patient_folder, file_name):
-        patient_dir = os.path.join(self.data_dir, patient_folder)
-        view = 'SA' if '_SA_' in file_name else 'LA' if '_LA_' in file_name else None
-        if view is None:
-            return None
-        for phase in ('ED', 'ES'):
-            gt_path = os.path.join(patient_dir, f'{patient_folder}_{view}_{phase}_gt.nii.gz')
-            if os.path.exists(gt_path):
-                return gt_path
-        return None
+        return resolve_phase_matched_gt(self.data_dir, patient_folder, file_name)
 
     def slice_has_mask(self, gt_data, slice_idx):
         if slice_idx >= gt_data.shape[2]:
