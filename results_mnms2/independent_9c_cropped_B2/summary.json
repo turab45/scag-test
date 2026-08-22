@@ -1,0 +1,87 @@
+{
+  "design": "patient-level cross-fit: graph on train patients; profiles on held-out patients",
+  "primary_endpoint": "edge semantic similarity minus train-statistic-matched non-edge similarity",
+  "n_samples": 720,
+  "n_patients": 360,
+  "n_channels": 768,
+  "concept_names": [
+    "LV_basal",
+    "LV_mid",
+    "LV_apical",
+    "MYO_basal",
+    "MYO_mid",
+    "MYO_apical",
+    "RV_basal",
+    "RV_mid",
+    "RV_apical"
+  ],
+  "densities": {
+    "0.01": {
+      "n_folds": 5,
+      "mean_edge_semantic_similarity": 0.6948723240369168,
+      "mean_matched_nonedge_semantic_similarity": 0.5903054779208425,
+      "mean_edge_minus_matched_nonedge": 0.10456684611607425,
+      "patient_bootstrap_ci_low": 0.10162754363432473,
+      "patient_bootstrap_ci_high": 0.10677646438799325,
+      "primary_profile_permutation_null_mean": -8.016650431279761e-05,
+      "primary_profile_permutation_null_sd": 0.0037502608363531604,
+      "primary_profile_permutation_p": 0.000999000999000999,
+      "mean_exact_match_rate": 1.0,
+      "mean_topology_edge_change_fraction": 0.706806517311609,
+      "mean_global_nmi": 0.39748802615076084,
+      "mean_global_ari": 0.04177149098967383
+    },
+    "0.025": {
+      "n_folds": 5,
+      "mean_edge_semantic_similarity": 0.6890037436454987,
+      "mean_matched_nonedge_semantic_similarity": 0.5986354132345185,
+      "mean_edge_minus_matched_nonedge": 0.09036833041098011,
+      "patient_bootstrap_ci_low": 0.08760778305319095,
+      "patient_bootstrap_ci_high": 0.09255191618052314,
+      "primary_profile_permutation_null_mean": 3.026338482756185e-05,
+      "primary_profile_permutation_null_sd": 0.002846081426601214,
+      "primary_profile_permutation_p": 0.000999000999000999,
+      "mean_exact_match_rate": 1.0,
+      "mean_topology_edge_change_fraction": 0.6692868006518197,
+      "mean_global_nmi": 0.3120126792143749,
+      "mean_global_ari": 0.05316242262497165
+    },
+    "0.05": {
+      "n_folds": 5,
+      "mean_edge_semantic_similarity": 0.6835539818291796,
+      "mean_matched_nonedge_semantic_similarity": 0.6169177243155929,
+      "mean_edge_minus_matched_nonedge": 0.06663625751358664,
+      "patient_bootstrap_ci_low": 0.06440888927198145,
+      "patient_bootstrap_ci_high": 0.06854170615896972,
+      "primary_profile_permutation_null_mean": 1.3912272584746685e-05,
+      "primary_profile_permutation_null_sd": 0.0023206029277746377,
+      "primary_profile_permutation_p": 0.000999000999000999,
+      "mean_exact_match_rate": 1.0,
+      "mean_topology_edge_change_fraction": 0.6265804305017995,
+      "mean_global_nmi": 0.21309712957365368,
+      "mean_global_ari": 0.04756777081016439
+    },
+    "0.1": {
+      "n_folds": 5,
+      "mean_edge_semantic_similarity": 0.6791659048802499,
+      "mean_matched_nonedge_semantic_similarity": 0.6204595963404566,
+      "mean_edge_minus_matched_nonedge": 0.05870630853979324,
+      "patient_bootstrap_ci_low": 0.05664807035045995,
+      "patient_bootstrap_ci_high": 0.060443285742788656,
+      "primary_profile_permutation_null_mean": 2.8718261363459072e-05,
+      "primary_profile_permutation_null_sd": 0.002216966378670765,
+      "primary_profile_permutation_p": 0.000999000999000999,
+      "mean_exact_match_rate": 1.0,
+      "mean_topology_edge_change_fraction": 0.5907642684955693,
+      "mean_global_nmi": 0.11161974824701607,
+      "mean_global_ari": 0.030629493905238586
+    }
+  },
+  "warnings": [
+    "This controls extraction/evaluation reuse but cannot undo classifier-training leakage without the classifier split file.",
+    "Pairwise coupling-semantic rho is descriptive because channel pairs share nodes.",
+    "Global NMI/ARI are descriptive and are not evidence for semantically filtered components.",
+    "The patient bootstrap resamples held-out patients within folds and aggregates the same replicate across folds; graph estimates remain fixed within each fold.",
+    "Topology rewiring tests edge similarity as a secondary null; the declared primary endpoint is tested by the aggregate profile-permutation contrast."
+  ]
+}

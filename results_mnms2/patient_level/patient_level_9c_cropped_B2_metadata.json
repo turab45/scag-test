@@ -1,0 +1,21 @@
+{
+  "schema_version": 1,
+  "git_revision": "unknown",
+  "image_mode": "cropped",
+  "n_concepts": 9,
+  "block": 2,
+  "layer": "features.denseblock2",
+  "mnm2_root": "/media/kislay/New Volume/Turab/data/MnM2/",
+  "model_path": "/media/kislay/New Volume/Turab/CRAFT/models/best_densenet161_MnMs.pth",
+  "top_k_percent": 0.06,
+  "image_size": 224,
+  "n_samples": 720,
+  "n_patients": 360,
+  "dataset_module": "MnMs2DatasetConcpetsHeartUnion",
+  "dataset_kwargs": {
+    "crop_to_heart_union": true,
+    "derive_lax_concepts": true
+  },
+  "amp": false,
+  "note": "Patient-level extraction artifact; no graph or semantic threshold was selected here."
+}

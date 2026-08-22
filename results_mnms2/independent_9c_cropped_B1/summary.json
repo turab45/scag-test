@@ -1,0 +1,87 @@
+{
+  "design": "patient-level cross-fit: graph on train patients; profiles on held-out patients",
+  "primary_endpoint": "edge semantic similarity minus train-statistic-matched non-edge similarity",
+  "n_samples": 720,
+  "n_patients": 360,
+  "n_channels": 384,
+  "concept_names": [
+    "LV_basal",
+    "LV_mid",
+    "LV_apical",
+    "MYO_basal",
+    "MYO_mid",
+    "MYO_apical",
+    "RV_basal",
+    "RV_mid",
+    "RV_apical"
+  ],
+  "densities": {
+    "0.01": {
+      "n_folds": 5,
+      "mean_edge_semantic_similarity": 0.7386190472122955,
+      "mean_matched_nonedge_semantic_similarity": 0.5476207458112959,
+      "mean_edge_minus_matched_nonedge": 0.19099830140099955,
+      "patient_bootstrap_ci_low": 0.18711411204911002,
+      "patient_bootstrap_ci_high": 0.19487594329449034,
+      "primary_profile_permutation_null_mean": -7.760778234765152e-05,
+      "primary_profile_permutation_null_sd": 0.005499131654448588,
+      "primary_profile_permutation_p": 0.000999000999000999,
+      "mean_exact_match_rate": 1.0,
+      "mean_topology_edge_change_fraction": 0.751429347826087,
+      "mean_global_nmi": 0.43776335497195695,
+      "mean_global_ari": 0.0636883284269242
+    },
+    "0.025": {
+      "n_folds": 5,
+      "mean_edge_semantic_similarity": 0.7191047049257155,
+      "mean_matched_nonedge_semantic_similarity": 0.5540483113204983,
+      "mean_edge_minus_matched_nonedge": 0.1650563936052173,
+      "patient_bootstrap_ci_low": 0.16125379612093224,
+      "patient_bootstrap_ci_high": 0.16860490946761755,
+      "primary_profile_permutation_null_mean": -3.358436230076166e-06,
+      "primary_profile_permutation_null_sd": 0.004638472945222279,
+      "primary_profile_permutation_p": 0.000999000999000999,
+      "mean_exact_match_rate": 1.0,
+      "mean_topology_edge_change_fraction": 0.6765220228384992,
+      "mean_global_nmi": 0.3729007541787678,
+      "mean_global_ari": 0.08230790573456773
+    },
+    "0.05": {
+      "n_folds": 5,
+      "mean_edge_semantic_similarity": 0.7040808719457937,
+      "mean_matched_nonedge_semantic_similarity": 0.5552288499693037,
+      "mean_edge_minus_matched_nonedge": 0.1488520219764901,
+      "patient_bootstrap_ci_low": 0.14508492180231466,
+      "patient_bootstrap_ci_high": 0.15183354338468846,
+      "primary_profile_permutation_null_mean": -7.377416517326342e-05,
+      "primary_profile_permutation_null_sd": 0.003911704586147347,
+      "primary_profile_permutation_p": 0.000999000999000999,
+      "mean_exact_match_rate": 1.0,
+      "mean_topology_edge_change_fraction": 0.629354364971444,
+      "mean_global_nmi": 0.29631510993761084,
+      "mean_global_ari": 0.1185156762527045
+    },
+    "0.1": {
+      "n_folds": 5,
+      "mean_edge_semantic_similarity": 0.6900807111452332,
+      "mean_matched_nonedge_semantic_similarity": 0.599970858770758,
+      "mean_edge_minus_matched_nonedge": 0.09010985237447515,
+      "patient_bootstrap_ci_low": 0.08731845094178886,
+      "patient_bootstrap_ci_high": 0.09210702242317928,
+      "primary_profile_permutation_null_mean": 8.420270921359369e-05,
+      "primary_profile_permutation_null_sd": 0.003735184232653877,
+      "primary_profile_permutation_p": 0.000999000999000999,
+      "mean_exact_match_rate": 1.0,
+      "mean_topology_edge_change_fraction": 0.5912289910252924,
+      "mean_global_nmi": 0.20545700171556658,
+      "mean_global_ari": 0.12891996161384994
+    }
+  },
+  "warnings": [
+    "This controls extraction/evaluation reuse but cannot undo classifier-training leakage without the classifier split file.",
+    "Pairwise coupling-semantic rho is descriptive because channel pairs share nodes.",
+    "Global NMI/ARI are descriptive and are not evidence for semantically filtered components.",
+    "The patient bootstrap resamples held-out patients within folds and aggregates the same replicate across folds; graph estimates remain fixed within each fold.",
+    "Topology rewiring tests edge similarity as a secondary null; the declared primary endpoint is tested by the aggregate profile-permutation contrast."
+  ]
+}
